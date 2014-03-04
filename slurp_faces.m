@@ -1,9 +1,7 @@
-function [faces, nonfaces] = slurp_images()
-  face_files = dir('./faces/*')(3:end);
-  nonface_files = dir('./nonface/*.png');
+function [faces] = slurp_faces()
+  face_files = dir('./faces/*09.jpg');
 
   faces = [];
-  nonfaces = [];
 
   for i=1:numel(face_files)
     try 
@@ -16,15 +14,10 @@ function [faces, nonfaces] = slurp_images()
         % already in bw
         im = im;
       end
-      im = imresize(im, [128, 128]);
+      im = imresize(im, [24, 24]);
       faces = [faces im];
     catch
       face_files(i).name
     end
-  end
-
-  for i=1:numel(nonface_files)
-    nonface_file=strcat('./nonfaces/',nonface_files(i).name);
-    nonfaces = [nonfaces imread(nonfaces)];
   end
 end

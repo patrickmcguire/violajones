@@ -1,13 +1,13 @@
-function apply_type_four(img, vec)
+function val = apply_type_four(img, vec)
   y0 = vec(1);
   x0 = vec(2);
   height = vec(3);
   width = vec(4);
   
-  y_third = y0 + height / 3;
-  y_two_third = y0 + (2 * height / 3);
-  y_end = y0 + height;
-  x_end = x0 + width;
+  y_third = y0 + height / 3 - 1;
+  y_two_third = y0 + (2 * height / 3) - 1;
+  y_end = y0 + height - 1;
+  x_end = x0 + width - 1;
 
   v1 = img(y0,x0) - (img(y0, x_end) + img(y_third, x0)) + img(y_third, x_end);
   v2 = img(y_third+1,x0) - (img(y_third+1,x_end) + img(y_two_third, x0)) + img(y_two_third,x_end);
